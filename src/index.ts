@@ -9,6 +9,7 @@ if (!apiKey) {
   process.exit(1);
 }
 
+const model = process.argv[2] || 'gpt-5-nano';
 const openai = new OpenAI({ apiKey });
 
 const rl = readline.createInterface({
@@ -29,11 +30,11 @@ const rl = readline.createInterface({
     messages.push({ role: 'user', content });
     try {
       const completion = await openai.chat.completions.parse({
-        model: 'gpt-5-nano',
+        model,
         messages,
       });
       const reply = completion.choices[0]?.message?.content || '[empty]';
-      console.log(`\n${reply}`);
+      console.log(`\n${model}\n${reply}`);
       messages.push({ role: 'assistant', content: reply });
     } catch (err) {
       console.error(err);

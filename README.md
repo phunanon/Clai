@@ -9,4 +9,5 @@ pnpm i
 pnpm build
 pnpm link --global
 # use "clai" in the terminal anywhere thereafter
+# optional argument to select model e.g. "clai gpt-5"
 ```
