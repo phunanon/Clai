@@ -31,6 +31,7 @@ const rl = readline.createInterface({
     try {
       const completion = await openai.chat.completions.parse({
         model,
+        reasoning_effort: 'minimal',
         messages,
       });
       const reply = completion.choices[0]?.message?.content || '[empty]';
